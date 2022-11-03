@@ -1,0 +1,61 @@
+{% extends 'home.html' %} 
+<!-- {% block title %} Home Page {% endblock %} -->
+{% block content %} 
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Employees</title>
+    {% comment %} <link href="style.css" rel="stylesheet" type="text/css" /> {% endcomment %}
+</head>
+
+
+
+    <!-- Page content -->
+    <div class = "emp-body">
+        <center>
+        <h1>Employee Info</h1>
+        <table border=1>
+            <!-- <caption></caption> -->
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Name</th>
+                    <th>Pay Rate</th>
+                    <th>Work Start Date</th>
+                    <th>Weekly Hours</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Supervisor ID</th>
+                    <th>Supervisor Name</th>
+                </tr>
+            </thead>
+            <tr>
+                <th>ID</th>
+                <td>Kundan Paudel</td>
+                <td>13</td>
+                <td>10/10/2020</td>
+                <td>49</td>
+                <td>something@gmail.com</td>
+                <td>123456789</td>
+                <td>123</td>
+                <td>Someone Lastname</td>
+            </tr>
+            <tr>
+                <th>ID</th>
+                <td>Ben Stark</td>
+                <td>15</td>
+                <td>01/20/2020</td>
+                <td>70</td>
+                <td>somethingElse@gmail.com</td>
+                <td>1987654321</td>
+                <td>234</td>
+                <td>SomeoneElse Lastname</td>
+            </tr>
+        </table>
+    </div>
+    {% comment %} <script src="script.js"></script> {% endcomment %}
+    </table>
+</center>
+
+{% endblock %}
