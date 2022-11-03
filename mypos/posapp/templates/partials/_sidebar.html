@@ -1,5 +1,5 @@
 {% load static %}
-{%if user.is_authenticated%}
+{% comment %} {%if user.is_authenticated%} {% endcomment %}
 <!-- side bar -->
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
   <div class="position-sticky pt-3 sidebar-sticky">
@@ -11,21 +11,21 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="/adminEmp">
+        <a class="nav-link" aria-current="page" href="/empTable">
           <span data-feather="home" class="align-text-bottom"></span>
           Employee Report
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/adminVend">
+        <a class="nav-link" href="/custTable">
           <span data-feather="file" class="align-text-bottom"></span>
-          Vendor Report
+          Customer Report
         </a>
       </li>
     </ul>
   </div>
 </nav>
-{%elif employee.is_authenticated%}
+{% comment %} {%elif employee.is_authenticated%}
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
   <div class="position-sticky pt-3 sidebar-sticky">
     <ul class="nav flex-column">
@@ -76,4 +76,4 @@
   </div>
 </nav>
 {%endif%}
-<!-- End side bar -->
+<!-- End side bar --> {% endcomment %}

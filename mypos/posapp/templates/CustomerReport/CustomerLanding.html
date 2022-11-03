@@ -1,55 +1,44 @@
-
-<!DOCTYPE html>
-<html>
+{% extends 'home.html' %} 
+<!-- {% block title %} Home Page {% endblock %} -->
+{% block content %} 
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Employees</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    {% comment %} <link href="style.css" rel="stylesheet" type="text/css" /> {% endcomment %}
 </head>
-
-<body>
-    <div class="topnav">
-        <input type="text" placeholder="Search by ID">
-    </div>
     
 
-    <!-- Side navigation -->
-    <div class="sidenav">
-        {% comment %} <a href="./CustomerLanding.html">Transactions</a> {% endcomment %}
-        <a href="#">Log Out</a>
-    </div>
 
     <!-- Page content -->
-    <div class="main">
-        <h1>Transactions</h1>
-        <table>
+    <div class="emp-body">
+        <center>
+        <h1>Customers List</h1>
+        <table border = 1>
             <!-- <caption></caption> -->
             <thead>
                 <tr>
-                    <th>Transaction ID</th>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Transaction Date</th>
+                    <th>Customer ID</th>
+                    <th>Customer Name</th>
+                    <th>Email</th>
+                    <th>Date of Birth</th>
+                    <th>Action</th>
                 </tr>
             </thead>
+            {% for cust in customers %} 
+            <tbody>
             <tr>
-                <td>130</td>
-                <td>Chips</td>
-                <td>$4</td>
-                <td>10/10/2020</td>
+                <td>{{cust.cust_id}}</td>
+                <td>{{cust.cust_name}}</td>
+                <td>{{cust.cust_email}}</td>
+                <td>{{cust.cust_dob}}</td>
+                <td><a href="delete/{{ cust.cust_id }}">delete</a></td>
             </tr>
-            <tr>
-                <td>131</td>
-                <td>Beer</td>
-                <td>$16</td>
-                <td>10/11/2020</td>
-            </tr>
+            </tbody>
+            {%endfor%}
         </table>
+    </center>
     </div>
-    <script src="script.js"></script>
     </table>
-</body>
-
-</html>
+{%endblock%}

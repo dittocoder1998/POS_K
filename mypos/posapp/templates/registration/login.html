@@ -8,10 +8,10 @@
 <form method = 'post'>
 {% csrf_token %} {{form|crispy}}
 <p>
-    {% comment %} Don't have an account? Create one 
+     Don't have an account? Create one 
         <a href = '/sign-up'>
             Here
-        </a>! {% endcomment %}
+        </a>! 
     <div class="align-login-button">
     <button type = 'submit' class = 'btn btn-success' >Login</button>
     </div>

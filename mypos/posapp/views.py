@@ -1,4 +1,5 @@
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse, HttpResponseRedirect
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
@@ -7,6 +8,10 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import EmployeeForm
 from .models import Employee
+from .models import Customer
+from django.template import loader
+from django.urls import reverse
+#from posapp.models import Employee
 
 # from POS.models import Departments, Employees
 # from POS.serializers import DepartmentSerializer, EmployeeSerializer
@@ -74,8 +79,8 @@ def add_customer(request):
 def custLand(request):
     return render(request, 'CustomerReport/CustomerLanding.html')
 
-def adminEmp(request):
-    return render(request, 'AdminReport/AdminEmployee.html')
+# def adminEmp(request):
+#     return render(request, 'AdminReport/AdminEmployee.html')
 
 def adminVend(request):
     return render(request, 'AdminReport/AdminVendor.html')
@@ -91,3 +96,29 @@ def shop(request):
 
 def custTrans(request):
     return render(request, 'CustomerReport/CustomerLanding.html')
+
+def empTable(request):
+    mydata = Employee.objects.all()
+    template = loader.get_template('AdminReport/AdminEmployee.html')
+    context = {
+        'employees': mydata,
+    }
+    return HttpResponse(template.render(context, request))
+
+def custTable(request):
+    mydata = Customer.objects.all()
+    template = loader.get_template('CustomerReport/CustomerLanding.html')
+    context = {
+        'customers': mydata,
+    }
+    return HttpResponse(template.render(context, request))
+
+def delete(request, id):
+  member = Customer.objects.get(cust_id=id)
+  member.delete()
+  return HttpResponseRedirect(reverse('custTable'))
+
+def deleteEmp(request, id):
+  member = Employee.objects.get(emp_id=id)
+  member.delete()
+  return HttpResponseRedirect(reverse('empTable'))
